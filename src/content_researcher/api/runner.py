@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from src.content_researcher.crew import ContentResearcherCrew
-import tracebeck
+import traceback
 
 load_dotenv()
 
