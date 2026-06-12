@@ -29,13 +29,23 @@ def home():
 def health_check():
     return {"status": "healthy"}
 
+
 @app.post("/generate")
 def research_topic(request: ResearchRequest):
-    try:
-        article = generate_article(request.topic)
-        return {
-            "topic": request.topic,
-            "article": article
-            }
-    except Exception as e:
-        return {"error": str(e)}
+    result = generate_article(request.topic)
+    if not result["success"]:
+        return {"error": result["error"]}  # surface the real error
+    return {
+        "topic": request.topic,
+        "article": result["article"]
+    }
+# @app.post("/generate")
+# def research_topic(request: ResearchRequest):
+#     try:
+#         article = generate_article(request.topic)
+#         return {
+#             "topic": request.topic,
+#             "article": article
+#             }
+#     except Exception as e:
+#         return {"error": str(e)}
