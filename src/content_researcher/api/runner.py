@@ -4,6 +4,12 @@ import traceback
 
 load_dotenv()
 
+import os
+
+# Verify model is set
+model = os.environ.get("MODEL")
+print(f"Using model: {model}")  # will show in Render logs
+
 
 def generate_article(topic: str):
     try:
