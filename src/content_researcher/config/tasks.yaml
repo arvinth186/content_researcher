@@ -1,0 +1,54 @@
+research_task:
+  description: >
+    Research {topic} thoroughly. Search for recent developments,
+    key facts, expert opinions, statistics, and background context.
+    Gather at least 5-7 credible sources worth of information.
+    Focus on accuracy and comprehensiveness.
+  expected_output: >
+    A detailed research brief with key findings organized by
+    subtopic, source references, notable quotes, and important
+    statistics or data points found.
+  agent: research_agent
+
+fact_check_task:
+  description: >
+    Review all research findings about {topic}.
+    Cross-verify key claims using additional searches.
+    Flag anything unverified or contradictory.
+    Confirm statistics, dates, and attributions are accurate.
+  expected_output: >
+    A verified research brief with each major claim marked as
+    Verified / Unverified / Contradicted, plus corrections
+    where needed. Remove or flag anything unreliable.
+  agent: fact_checker
+  context:
+    - research_task
+
+writing_task:
+  description: >
+    Using the verified research, write a comprehensive article
+    about {topic}. Structure it with a compelling introduction,
+    organized body sections with subheadings, and a strong
+    conclusion. Target length: 600-800 words.
+    Tone: informative yet engaging.
+  expected_output: >
+    A well-structured article in markdown format with:
+    title, introduction, 3-4 body sections with subheadings,
+    conclusion, and a sources/references section at the end.
+  agent: writer_agent
+  context:
+    - fact_check_task
+
+editing_task:
+  description: >
+    Edit and polish the article about {topic} to publication quality.
+    Improve sentence flow, fix any awkward phrasing, strengthen
+    the introduction and conclusion, ensure consistent tone,
+    and verify the structure is logical and engaging.
+  expected_output: >
+    A publication-ready article in markdown format — polished,
+    well-structured, engaging, and accurate. This is the final
+    version ready for publishing or sharing.
+  agent: editor_agent
+  context:
+    - writing_task
