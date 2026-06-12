@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 from src.content_researcher.crew import ContentResearcherCrew
+import tracebeck
 
 load_dotenv()
 
@@ -26,7 +27,9 @@ def generate_article(topic: str):
         }
 
     except Exception as e:
+         print(traceback.format_exc())
         return {
             "success": False,
-            "error": str(e)
+            "error": str(e),
+            "traceback": traceback.format_exc()
         }
