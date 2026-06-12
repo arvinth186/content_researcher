@@ -1,9 +1,8 @@
 research_task:
   description: >
-    Research {topic} thoroughly. Search for recent developments,
-    key facts, expert opinions, statistics, and background context.
-    Gather at least 5-7 credible sources worth of information.
-    Focus on accuracy and comprehensiveness.
+    Research {topic} thoroughly.
+    Gather information from 2-3 credible sources.
+    Focus on key facts and recent developments.
   expected_output: >
     A detailed research brief with key findings organized by
     subtopic, source references, notable quotes, and important
